@@ -1,24 +1,24 @@
 version: '3.1'
 
-------:
+services:
 
   postgresdb:
-    image: ------
+    image: postgres:latest
     ports:
-      - ------:------
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=matthias
-      - POSTGRES_DB=------
+      - POSTGRES_DB=mydb
 
   todobackend:
-    image: ------
+    image: todobackend:v0.1
     ports:
       - 8080:8080
     depends_on:
-      - ------
+      - postgresdb
 
-  ------:
-    image: <QUAYusername>/todoui:v1
+  todoui:
+    image: todoui:v1
     ports:
-      - ------:------
+      - 8090:8090
